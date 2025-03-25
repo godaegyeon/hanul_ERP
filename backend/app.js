@@ -79,7 +79,7 @@ app.delete("/employees/:id", async (req, res) => {
 });
 console.log(process.env.NODE_ENV);
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === "production") {
   app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
     readEmployees();
