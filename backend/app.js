@@ -1,6 +1,7 @@
 // const express = require('express')
 import express from "express";
 import cors from "cors";
+import 'dotenv/config'
 import { readEmployees } from "./crud-lead.js";
 import { createEmployees } from "./crud-create.js";
 import { deleteEmployees } from "./crud-delete.js";
@@ -45,15 +46,13 @@ app.post("/employees", async (req, res) => {
 });
 app.put("/employees/:id", async (req, res) => {
   console.log(target);
-  
+
   try {
     const request = await updateUser({
       id: req.params.id,
       data: req.body,
     });
-    res.status(201).json(
-      result
-    );
+    res.status(201).json(result);
   } catch (e) {
     console.log(e);
     res.status(500).json({
@@ -78,8 +77,11 @@ app.delete("/employees/:id", async (req, res) => {
     });
   }
 });
+console.log(process.env.NODE_ENV);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-  readEmployees();
-});
+if (process.env.NODE_ENV === "development") {
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+    readEmployees();
+  });
+}
