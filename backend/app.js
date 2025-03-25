@@ -1,7 +1,8 @@
 // const express = require('express')
 import express from "express";
 import cors from "cors";
-import 'dotenv/config'
+import "dotenv/config";
+// import { GET } from ".api/index.js";
 import { readEmployees } from "./crud-lead.js";
 import { createEmployees } from "./crud-create.js";
 import { deleteEmployees } from "./crud-delete.js";
