@@ -43,7 +43,7 @@ function ModifyEmployee({ editEmployee, setIsModalShow }) {
   const updateEmployee = async () => {
     console.log(formData);
     await axios
-      .put(`http://localhost:3000/employees/${formData._id}`, {
+      .put(`/employees/${formData._id}`, {
         employee_id: formData.id,
         last_name: formData.lastName,
         first_name: formData.firstName,
