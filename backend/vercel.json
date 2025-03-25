@@ -1,0 +1,9 @@
+
+{ "version": 2, "rewrites": [    {
+  "source": "/employees/:path*",
+  "destination": "/employees/:path*"
+},
+{
+  "source": "/employees",
+  "destination": "/employees"
+}] }

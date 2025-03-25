@@ -8,7 +8,7 @@ import { deleteEmployees } from "./crud-delete.js";
 import { updateEmployees } from "./crud-update.js";
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
