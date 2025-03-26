@@ -1,5 +1,5 @@
 { "version": 2, "rewrites": [
   {
     "source": "/employees", 
-    "destination": "/api" 
+    "destination": "https://hanul-erp-backend-xi.vercel.app/api" 
   }] }
