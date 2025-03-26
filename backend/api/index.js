@@ -8,9 +8,7 @@ export default async function handler(req, res) {
   try {
     switch (req.method) {
       case "GET":
-        const allEmployees = coll.find({}).toArray();
-        console.log(allEmployees);
-        
+        const allEmployees = await coll.find().toArray();
         res.status(200).json(allEmployees);
         break;
       case "POST":
