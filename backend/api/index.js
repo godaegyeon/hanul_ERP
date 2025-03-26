@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 export default async function handler(req, res) {
-  const client = new MongoClient(process.eventNames.MONGODB_URI);
+  const client = new MongoClient(process.env.MONGODB_URI);
   await client.connect();
   const db = client.db("hr");
   const coll = db.collection("employees");
