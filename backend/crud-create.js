@@ -15,9 +15,9 @@ export async function createEmployees(employee) {
 
   } catch (e) {
     console.log(e);
-/*   } finally {
+  } finally {
     // Ensures that the client will close when you finish/error
-    await client.close(); */
+    await client.close();
   }
 }
 // createEmployees().catch(console.dir);

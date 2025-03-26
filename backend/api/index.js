@@ -1,12 +1,37 @@
-export async function GET(request) {
-  return new Response('response GET')
-}
-export async function POST(request) {
-  return new Response('response POST')
-}
-export async function PUT(request) {
-  return new Response('response PUT')
-}
-export async function DELETE(request) {
-  return new Response('response DELETE')
+import { MongoClient } from "mongodb";
+export default async function handler(req, res) {
+  const client = new MongoClient(process.eventNames.MONGODB_URI);
+  await client.connect();
+  const db = client.db("hr");
+  const coll = db.collection("employees");
+
+  try {
+    switch (req.method) {
+      case "GET":
+        const allEmployees = coll.find().toArray();
+        // const cursor = coll.find();
+        // const users = await cursor.toArray()
+        res.status(200).json(allEmployees);
+        break;
+      case "POST":
+        const newEmployee = req.body;
+        const result = await coll.insertOne(newEmployee);
+        res.status(200).json(result);
+        break;
+      default:
+        res.setHeader('Allow',['GET','POST','PUT','DELETE'])
+        res.status(405).end(`${req.method}는 허용되지 않습니다`)
+    }
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({
+      status: "fall",
+      error: e.message,
+      msg: "서버 통신 오류, 관리자 문의 요망",
+    });
+  } finally {
+    await client.close();
+  }
+
+  return new Response("response GET");
 }
