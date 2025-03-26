@@ -32,7 +32,7 @@ function AddEmployees() {
 
   const addEmployee = async () => {
     await axios
-      .post('/employees', {
+      .post('https://hanul-erp-backend-xi.vercel.app/api', {
         employee_id: formData.id,
         last_name: formData.lastName,
         first_name: formData.firstName,

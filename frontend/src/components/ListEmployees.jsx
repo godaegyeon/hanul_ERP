@@ -28,7 +28,7 @@ function ListEmployees() {
     const targetId = e.currentTarget.dataset.empId;
     if (confirm('정말로 삭제하시겠슴니까?')) {
       await axios
-        .delete(`https://hanul-erp-backend-xi.vercel.app/api/employees/${targetId}`)
+        .delete(`https://hanul-erp-backend-xi.vercel.app/api/${targetId}`)
         .then((response) => console.log(response))
         .catch((e) => console.log(e));
     }
