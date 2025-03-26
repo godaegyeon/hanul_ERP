@@ -1,18 +1,8 @@
-import { MongoClient } from "mongodb";
-const uri = MONGODB_ATLAS_URI;
-const client = new MongoClient(uri);
-export async function GET(request) {
-  try {
-    await client.connect();
-    const db = client.db("hr");
-    const coll = db.collection("employees");
-    const cursor = coll.find();
-    const users = await cursor.toArray()
-    return users;
+const express = require("express");
+const app = express();
 
-  } catch (e) {
-    console.log(e);
-  } finally {
-    await client.close();
-  }
-}
+app.get("/", (req, res) => res.send("Express on Vercel"));
+
+app.listen(3000, () => console.log("Server ready on port 3000."));
+
+module.exports = app;
